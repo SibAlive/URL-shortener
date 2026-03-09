@@ -28,21 +28,58 @@
 - PostgreSQL 17+
 - Docker
 
-## Инструкция по установке и запуску приложения
+## Инструкция по установке и запуску сервиса
 
-1. Клонирование репозитория:
-# git clone https://github.com/SibAlive/dns.git
-# cd dns
-2. Создание виртуального окружения (для Windows):
-# python -m venv venv
-# venv/Scripts/activate
-3. Установка зависимостей:
-# pip install -r requirements.txt
-4. Настройка переменных окружения (файл .env необходимо заполнить своими данными:
-# cp .env.example .env
-5. Отметить папку dns как source root и создать БД и таблицы
-# Запустить файл services/create_table/create_db_table
-6. Восстановления дампа БД
-# pg_restore -h localhost -p 5432 -U postgres -d test_dns --clean --if-exists backup.dump
-7. Запустить сервер локально:
-# waitress-serve --host=localhost --port=5000 "wsgi:application"
+- Клонирование репозитория:
+`git clone https://github.com/SibAlive/URL-shortener.git`
+- Вход в папку проекта
+`cd URL-shortener`
+- Настройка переменных окружения (файл .env необходимо заполнить своими данными):
+`cp .env.example .env`
+- Запуск docker контейнера
+`docker compose up -d --build`
+
+## Инструкция по эксплуатации сервиса
+### Сервис состоит из двух частей - Web и API
+
+## API: 
+- Создание короткой ссылки
+### POST http://localhost:8000//shorten
+Запрос:
+```
+{
+    "url": "https://example.com/example-url",
+    "custom_code": "your_short_code"  // опционально
+}
+```
+
+Ответ:
+```
+{
+    "short_id": "your_short_code" // или сгенерированный код
+}
+```
+
+- Редирект по короткой ссылке
+### GET http://localhost:8000//{short_id}
+
+Ответ
+```
+{
+    "original_url": "https://example.com/example-url"
+}
+```
+
+- Получение статистики
+### GET http://localhost:8000//stats/{short_id}
+
+Ответ
+```
+{
+    "clicks": 3
+}
+```
+
+## Web интерфейс:
+- Веб интерфейс доступен по пути http://localhost:8000/web/
+- Веб интерфейс имеет те же возможности, что и API
