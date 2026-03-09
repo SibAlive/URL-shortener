@@ -44,7 +44,7 @@
 
 ## API: 
 - Создание короткой ссылки
-### POST http://localhost:8000//shorten
+### POST http://localhost:8000/shorten
 Запрос:
 ```
 {
@@ -61,7 +61,7 @@
 ```
 
 - Редирект по короткой ссылке
-### GET http://localhost:8000//{short_id}
+### GET http://localhost:8000/{short_id}
 
 Ответ
 ```
@@ -71,7 +71,7 @@
 ```
 
 - Получение статистики
-### GET http://localhost:8000//stats/{short_id}
+### GET http://localhost:8000/stats/{short_id}
 
 Ответ
 ```
