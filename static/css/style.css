@@ -1,0 +1,316 @@
+/* Основные стили */
+body {
+    font-family: Arial, sans-serif;
+    max-width: 800px;
+    margin: 50px auto;
+    padding: 20px;
+    line-height: 1.6;
+    color: #333;
+}
+
+/* Заголовки */
+h1 {
+    color: #2c3e50;
+    text-align: center;
+    margin-bottom: 30px;
+}
+
+h3 {
+    color: #34495e;
+    margin-top: 0;
+}
+
+/* Форма */
+.form-group {
+    margin-bottom: 20px;
+}
+
+.form-group label {
+    display: block;
+    margin-bottom: 5px;
+    font-weight: bold;
+    color: #2c3e50;
+}
+
+.form-group input[type=url],
+.form-group input[type=text] {
+    width: 100%;
+    padding: 12px;
+    border: 2px solid #e0e0e0;
+    border-radius: 6px;
+    font-size: 16px;
+    transition: border-color 0.3s ease;
+    box-sizing: border-box;
+}
+
+.form-group input[type=url]:focus,
+.form-group input[type=text]:focus {
+    outline: none;
+    border-color: #007bff;
+    box-shadow: 0 0 5px rgba(0,123,255,0.3);
+}
+
+.form-group input.invalid {
+    border-color: #dc3545;
+}
+
+/* Кнопки */
+button {
+    background: linear-gradient(to bottom, #007bff, #0056b3);
+    color: white;
+    padding: 12px 30px;
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+    font-size: 16px;
+    font-weight: bold;
+    transition: all 0.3s ease;
+    width: 100%;
+}
+
+button:hover {
+    background: linear-gradient(to bottom, #0056b3, #004085);
+    transform: translateY(-2px);
+    box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+}
+
+button:active {
+    transform: translateY(0);
+}
+
+/* Результаты и ошибки */
+.result {
+    margin-top: 30px;
+    padding: 20px;
+    border-radius: 8px;
+    background: #e8f5e9;
+    border-left: 5px solid #28a745;
+    animation: slideIn 0.5s ease;
+}
+
+.result.error {
+    background: #ffebee;
+    border-left-color: #dc3545;
+}
+
+.result h3 {
+    margin-top: 0;
+    color: inherit;
+}
+
+.result a {
+    color: #007bff;
+    text-decoration: none;
+    font-weight: bold;
+}
+
+.result a:hover {
+    text-decoration: underline;
+}
+
+/* Информационные блоки */
+.info {
+    font-size: 0.9em;
+    color: #666;
+    margin-top: 5px;
+    font-style: italic;
+}
+
+/* API секция */
+.api-section {
+    margin-top: 40px;
+    padding: 20px;
+    background: #f8f9fa;
+    border-radius: 8px;
+    border: 1px solid #dee2e6;
+}
+
+.api-section p {
+    margin: 10px 0;
+}
+
+.api-section a {
+    color: #007bff;
+    text-decoration: none;
+}
+
+.api-section a:hover {
+    text-decoration: underline;
+}
+
+/* Ссылки в результатах */
+.link-container {
+    background: white;
+    padding: 10px;
+    border-radius: 4px;
+    margin: 10px 0;
+    word-break: break-all;
+}
+
+/* Анимации */
+@keyframes slideIn {
+    from {
+        opacity: 0;
+        transform: translateY(-20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* Адаптивность */
+@media (max-width: 600px) {
+    body {
+        margin: 20px auto;
+        padding: 15px;
+    }
+
+    button {
+        padding: 15px;
+    }
+
+    .form-group input[type=url],
+    .form-group input[type=text] {
+        padding: 15px;
+        font-size: 18px;
+    }
+}
+
+/* Стили для валидации */
+input:invalid {
+    border-color: #ff6b6b;
+}
+
+input:valid {
+    border-color: #51cf66;
+}
+
+/* Дополнительные эффекты */
+.highlight {
+    background: #fff3cd;
+    padding: 2px 5px;
+    border-radius: 3px;
+    font-family: monospace;
+}
+
+/* ========== СТИЛИ ДЛЯ СТАТИСТИКИ ========== */
+
+/* Карточка статистики */
+.stat-card {
+    background: #f8f9fa;
+    padding: 25px;
+    border-radius: 12px;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+    border: 1px solid #e9ecef;
+}
+
+/* Элемент статистики */
+.stat-item {
+    margin: 15px 0;
+    padding: 15px 20px;
+    background: white;
+    border-radius: 8px;
+    border-left: 4px solid #007bff;
+    transition: transform 0.2s ease;
+}
+
+.stat-item:hover {
+    transform: translateX(5px);
+    box-shadow: 0 2px 8px rgba(0,123,255,0.1);
+}
+
+/* Счетчик кликов */
+.clicks {
+    font-size: 32px;
+    font-weight: bold;
+    color: #007bff;
+    display: inline-block;
+    margin-left: 10px;
+    animation: pulse 2s infinite;
+}
+
+@keyframes pulse {
+    0% { transform: scale(1); }
+    50% { transform: scale(1.05); }
+    100% { transform: scale(1); }
+}
+
+/* Кастомный код */
+.custom-badge {
+    background: #28a745;
+    color: white;
+    padding: 3px 10px;
+    border-radius: 20px;
+    font-size: 12px;
+    margin-left: 10px;
+    display: inline-block;
+}
+
+/* Ссылка возврата */
+.back-link {
+    display: inline-block;
+    margin-top: 25px;
+    padding: 10px 20px;
+    background: #007bff;
+    color: white;
+    text-decoration: none;
+    border-radius: 6px;
+    transition: background 0.3s ease;
+}
+
+.back-link:hover {
+    background: #0056b3;
+    text-decoration: none;
+    transform: translateY(-2px);
+    box-shadow: 0 4px 10px rgba(0,123,255,0.3);
+}
+
+/* Дата создания */
+.date-created {
+    color: #6c757d;
+    font-size: 0.9em;
+    margin-top: 5px;
+}
+
+/* Оригинальный URL в статистике */
+.stat-item a {
+    color: #007bff;
+    text-decoration: none;
+    word-break: break-all;
+}
+
+.stat-item a:hover {
+    text-decoration: underline;
+}
+
+/* Иконки */
+.stat-icon {
+    font-size: 20px;
+    margin-right: 10px;
+    vertical-align: middle;
+}
+
+
+/* ========== СТИЛИ ДЛЯ 404 ========== */
+.error-card {
+    background: #ffebee;
+    padding: 40px;
+    border-radius: 8px;
+}
+
+.error-card h1 {
+    color: #c62828;
+    font-size: 72px;
+    margin: 0 0 20px 0;
+}
+
+.error-card h2 {
+    color: #333;
+    margin-bottom: 20px;
+}
+
+.error-card p {
+    color: #666;
+    line-height: 1.6;
+}

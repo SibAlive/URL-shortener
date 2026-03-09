@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Сервис коротких ссылок</title>
+    <link rel="stylesheet" href="/static/css/style.css">
+</head>
+<body>
+    <h1>🔗 Сервис коротких ссылок на FastAPI</h1>
+
+    <form method="post" action="/web/shorten" id="link-form">
+        <div class="form-group">
+            <label for="url">Длинная ссылка:</label>
+            <input
+                type="text"
+                name="url"
+                id="url"
+                placeholder="https://example.com/very-long-url"
+                required
+                title="Введите полный URL адрес"
+            >
+        </div>
+
+        <div class="form-group">
+            <label for="custom_code">Желаемый код (необязательно):</label>
+            <input
+                type="text"
+                name="custom_code"
+                id="custom_code"
+                placeholder="my-cool-link"
+                pattern="[a-zA-Z0-9_-]+"
+                title="Только английские буквы, цифры, дефис и подчеркивание"
+                minlength="3"
+                maxlength="50"
+            >
+            <div class="info">Оставьте пустым для автоматической генерации</div>
+            <div class="info">Минимум 5 символов, только a-z, 0-9, -, _</div>
+        </div>
+
+        <button type="submit">✨ Сократить ссылку</button>
+    </form>
+
+    {% if short_url %}
+    <div class="result">
+        <h3>✅ Готово!</h3>
+        <div class="link-container">
+            <p><strong>Короткая ссылка:</strong>
+                <a href="{{ short_url }}" target="_blank" rel="noopener noreferrer">{{ short_url }}</a>
+            </p>
+            <p><strong>Оригинал:</strong>
+                <a href="{{ original_url }}" target="_blank" rel="noopener noreferrer">{{ original_url }}</a>
+            </p>
+        </div>
+        <p style="text-align: center;">
+            <a href="stats/{{ short_id }}" class="button-link">📊 Посмотреть статистику</a>
+        </p>
+    </div>
+    {% endif %}
+
+    {% if error %}
+    <div class="result error">
+        <h3>❌ Ошибка</h3>
+        <p>{{ error }}</p>
+    </div>
+    {% endif %}
+
+    <div class="api-section">
+        <h3>📡 API Endpoints</h3>
+        <p>• Документация API: <a href="/docs" target="_blank">/docs</a> (Swagger UI)</p>
+        <p>• Создать ссылку через API: <span class="highlight">POST /api/shorten</span></p>
+        <p>• Получить статистику: <span class="highlight">GET /api/stats/{code}</span></p>
+        <p>• Перейти по ссылке: <span class="highlight">GET /api/{code}</span></p>
+    </div>
+</body>
+</html>

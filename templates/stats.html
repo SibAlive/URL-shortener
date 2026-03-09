@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Статистика ссылки</title>
+    <link rel="stylesheet" href="/static/css/style.css">
+</head>
+<body>
+    <h1>📊 Статистика переходов</h1>
+
+    <div class="stat-card">
+        <div class="stat-item">
+            <span class="stat-icon">🔗</span>
+            <strong>Оригинальный URL:</strong><br>
+            <a href="{{ link.original_url }}" target="_blank" rel="noopener noreferrer">
+                {{ link.original_url }}
+            </a>
+        </div>
+
+        <div class="stat-item">
+            <span class="stat-icon">🏷️</span>
+            <strong>Короткий код:</strong>
+            <code>{{ link.short_id }}</code>
+            {% if link.is_custom %}
+                <span class="custom-badge">кастомный</span>
+            {% endif %}
+        </div>
+
+        <div class="stat-item">
+            <span class="stat-icon">👆</span>
+            <strong>Количество переходов:</strong>
+            <span class="clicks">{{ link.clicks }}</span>
+        </div>
+
+        <div class="stat-item">
+            <span class="stat-icon">📅</span>
+            <strong>Дата создания:</strong>
+            <span class="date-created">{{ link.created_at.strftime('%d.%m.%Y %H:%M') }}</span>
+        </div>
+    </div>
+
+    <div style="text-align: center;">
+        <a href="/web/" class="back-link">🔙 Создать новую ссылку</a>
+    </div>
+</body>
+</html>
