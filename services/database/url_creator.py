@@ -34,7 +34,7 @@ db_new = Database(
     host=env("POSTGRES_HOST"),
     port=env.int("POSTGRES_PORT", 5432),
     user=env("POSTGRES_USER"),
-    password=env("POSTGRES_PASSWORD")
+    password=env("POSTGRES_MAIN_PASSWORD")
     )
 
 DATABASE_URL = (
